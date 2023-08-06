@@ -1,20 +1,15 @@
 import logging
-import os
 from config import tg_bot_token
-from telegram import Update, KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, Message
+from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
-# Задайте токен вашего бота, который вы получили от BotFather в Телеграме.
-# BOT_TOKEN = "1758573114:AAGQlXER0-9zbhihioKibcI33L1ofSkT38U"
+# Token от BotFather в Телеграме.
 BOT_TOKEN = tg_bot_token
 
 # Настройка логгера
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-# Определение состояний для разговора с ботом
-PHOTO_CHOICE, VOICE_CHOICE = range(2)
 
 
 # Функции для команды /start
@@ -47,7 +42,7 @@ def help_command(update: Update, _: CallbackContext) -> None:
                 "/repo - Ссылка на репозиторий\n" \
                 "/help - Показать список команд\n\n" \
                 "Выбирайте интересующую тему из кнопок или используйте команды."
-
+    update.message.reply_text(help_text)
 
 
 # Функция для команды /selfie
@@ -65,7 +60,7 @@ def show_school_photo(update: Update, _: CallbackContext) -> int:
 # Функция для команды /hobby
 def read_about_hobby(update: Update, _: CallbackContext) -> int:
     update.message.reply_text("Моё главное увлечение - это публичные выступления! "
-                              "Это позволяет мне взаимодействовать с миром и решать интересные задачи.")
+                              "Это позволяет мне общаться с интересными людьми.")
 
 
 # Функция для команды /gpt
@@ -89,7 +84,7 @@ def first_love_story(update: Update, _: CallbackContext) -> int:
 # Функция для команды /repo
 def repository(update: Update, _: CallbackContext) -> int:
     update.message.reply_text("Мои исходники этого бота на GitHub: "
-                              "https://github.com/Egordovskiy/123")
+                              "https://github.com/EGordovskiy/tg_bot")
 
 
 # Функция для неизвестных команд
