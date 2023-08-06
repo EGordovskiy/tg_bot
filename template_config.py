@@ -1,0 +1,1 @@
+tg_bot_token = "token for your TelegramBot"
